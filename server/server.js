@@ -2,29 +2,34 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const NasaAPI = require('../src/datasource');
 
-const {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLSchema
-} = require('graphql');
-
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
+    type Query {
+    "Query to get photos array for the homepage "
+    get5Photos: [Photo!]!
+  }
+
+  "A photo is comprised of various metadata"
   type Photo {
-    date: date
-    explanation:
-    imageURL: imageURL
-    mediaType
+    date: String!
+    "The photo's title"
+    title: String!
+    "The photo's url"
+    url: String!
+    "The track's media type"
+    media_type: String
+    "The track's explanation"
+    explanation: String
   }
 `;
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    // hopefully returns an array of photo objects
+    get5Photos: (_, __, {dataSources}) => {
+      return dataSources.nasaAPI.get5Photos()
+    },
   },
 };
 
@@ -44,6 +49,6 @@ const startup = async () => {
 
 startup()
 app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(`🚀 Server ready at https://studio.apollographql.com/dev`)
 );
 ﻿
