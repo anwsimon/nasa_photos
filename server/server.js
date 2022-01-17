@@ -6,7 +6,7 @@ const NasaAPI = require('../src/datasource');
 const typeDefs = gql`
     type Query {
     "Query to get photos array for the homepage "
-    get5Photos: [Photo!]!
+    get5Photos: [Photo!]
   }
 
   "A photo is comprised of various metadata"
@@ -27,7 +27,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     // hopefully returns an array of photo objects
-    get5Photos: (_, __, {dataSources}) => {
+    get5Photos: async (_, __, {dataSources}) => {
       return dataSources.nasaAPI.get5Photos()
     },
   },
