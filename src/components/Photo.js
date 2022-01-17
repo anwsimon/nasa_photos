@@ -1,41 +1,28 @@
 import React from "react"
-import { gql, useQuery } from '@apollo/client';
+import { useState } from "react"
+import LikeButton from "./LikeButton"
 
-const NEW_QUERY = gql`
- query photoQuery {
-  get5Photos {
-    title,
-    url,
-    explanation,
-    date
-  }
-}`
+function Photo(props) {
+  const photo = props.photo
+  const [isLiked, setIsLiked] = useState(false)
 
-
-function Photo() {
-  const { loading, error, data } = useQuery(NEW_QUERY);
-  console.log("THIS IS DATA", data)
-  if (loading) return (<p>Thank you for waiting while the photos load ...</p>);
-
-  if (error) {
-    // console.log("THIS IS THE ERROR", error)
-    return <p>Error: {error.message}</p>;
-  }
-
+  console.log(isLiked)
   return (
-    <div>
+        <div>
+          <h2>{photo.title}</h2>
+          <h3>Earth Date: {photo.date}</h3>
+          <img src={photo.url} alt=''></img>
 
-          {data.get5Photos.map((photo) => {
-            return (
-              <div>
-                <h2>{photo.title}</h2>
-                <img src={photo.url} alt=''></img>
-                <p>{photo.explanation}</p>
-              </div>
-            )
-          })}
-    </div>
-  );
+          <LikeButton
+            onClick={() => {setIsLiked(!isLiked)}}
+            isLiked={isLiked}
+            title={isLiked ? "Unlike" : "Like"}
+          />
+
+          <p>{photo.explanation}</p>
+        </div>
+      )
 }
+
 
 export default Photo;
