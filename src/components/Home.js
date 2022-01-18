@@ -34,11 +34,13 @@ function Home() {
   }
   //homepage initial render, renders 5 photos
   return (
-    <div>
+    <div className="grid-list">
           {data.get5Photos.map((photo, index) => {
             return (
-              <div key ={index}>
-                <Photo photo = {photo}/>
+              <div key ={index} >
+                <div className = "grid-item">
+                  <Photo photo = {photo}/>
+                </div>
               </div>
             )
           })}
