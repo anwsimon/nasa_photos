@@ -15,7 +15,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-console.log(client.cache, 'this is cache')
 
 ReactDOM.render(
   <ApolloProvider client = {client}>

@@ -25,7 +25,7 @@ function Home() {
 
   //error screen & log output
   if (error) {
-    console.log(error, error.message)
+    console.error(error, error.message)
     return (
       <div>
         <p>Sorry, it appears we've experienced an error. We're hard at work trying to fix this.</p>
