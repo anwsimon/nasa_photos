@@ -17,6 +17,7 @@
   justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 50px;
 }
 
 .grid-list {
@@ -32,8 +33,10 @@
   color: black;
   font-size: 10;
   margin-bottom: 5%;
-  margin-left: 20%;
-  margin-right: 20%
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1rem solid;
+  align-items: center;
 
 }
 
@@ -50,10 +53,48 @@
 }
 
 .masked {
-  width: 350px;
-  height: 350px;
+  width:150px;
+  height: 150px;
   background-color: #8cffa0;
-  -webkit-mask-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Five_Pointed_Star_Solid.svg");
-  mask-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Five_Pointed_Star_Solid.svg");
-  mask-position: 20% 50%
+  -webkit-mask-image: url("https://upload.wikimedia.org/wikipedia/commons/0/01/SVG_Circle.svg");
+  mask-image: url("https://upload.wikimedia.org/wikipedia/commons/0/01/SVG_Circle.svg");
+  margin-top: 50px;
+  margin-bottom: 50px
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  border: none;
+  align-self: center;
+}
+
+.is-active {
+  width: 100px;
+  height: 100px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+    transition-duration: 1s;
+    background-position: -2800px 0;
+  border: none;
+  align-self: center;
+}
+
+body {
+  background: white;
+}
+
+.placement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

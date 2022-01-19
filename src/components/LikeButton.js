@@ -1,12 +1,11 @@
 import React from 'react';
 
 function LikeButton (props) {
-  const { onClick, title } = props;
+  const { onClick, className } = props;
 
   return (
-    <button onClick={onClick} className ="btn btn-primary">
-      {title}
-    </button>
+    <div onClick={onClick} className ={className}>
+    </div>
   );
 }
 

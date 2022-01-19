@@ -23,6 +23,7 @@ function Photo(props) {
                 onClick={() => {setIsLiked(!isLiked)}}
                 isLiked={isLiked}
                 title={isLiked ? "Unlike" : "Like"}
+                className={isLiked ? "is-active" : "heart"}
               />
             </div>
           </div>
