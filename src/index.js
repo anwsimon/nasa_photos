@@ -11,7 +11,7 @@ import {
 
 
 const client = new ApolloClient({
-  uri: 'https://blooming-gorge-40706.herokuapp.com/graphql/graphql',
+  uri: 'https://blooming-gorge-40706.herokuapp.com/graphql',
   cache: new InMemoryCache(),
   opts: {
     mode: "no-cors",
