@@ -22,7 +22,7 @@ const startup = async () => {
 
 
 startup()
-app.listen({ port: 4000 }, () =>
+app.listen({ port: process.env.PORT || 4000 }, () =>
   console.log(`🚀 Server ready at https://studio.apollographql.com/dev`)
 );
 

@@ -11,11 +11,11 @@ import {
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://blooming-gorge-40706.herokuapp.com/graphql/graphql',
   cache: new InMemoryCache(),
-  // opts: {
-  //   mode: "no-cors",
-  // }
+  opts: {
+    mode: "no-cors",
+  }
 });
 
 
