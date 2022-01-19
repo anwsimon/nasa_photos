@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .App-logo {
@@ -7,51 +8,52 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color:thistle ;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 .grid-list {
   display: flex;
   flex-direction: column;
   flex-basis: 1;
-  justify-items: center;
+  align-items: center;
+  justify-content: space-around
 }
 
 .grid-item {
-  width: 500px;
-  height: 600px;
-  align-self: auto;
+  align-self:space-around;
   color: black;
+  font-size: 10;
+  margin-bottom: 5%;
+  margin-left: 20%;
+  margin-right: 20%
+
 }
 
-.unenrolled {
-  color: red
+.card-description {
+  font-size: 12px
+}
+
+.header {
+  font: black
+}
+
+.icon {
+  height: 40vmin
+}
+
+.masked {
+  width: 350px;
+  height: 350px;
+  background-color: #8cffa0;
+  -webkit-mask-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Five_Pointed_Star_Solid.svg");
+  mask-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Five_Pointed_Star_Solid.svg");
+  mask-position: 20% 50%
 }

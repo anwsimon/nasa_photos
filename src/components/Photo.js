@@ -6,14 +6,16 @@ function Photo(props) {
   const photo = props.photo
   const [isLiked, setIsLiked] = useState(false)
 
-  console.log(isLiked)
-    return (
+  return (
           <div className = "card" >
             <img src={photo.url} alt=''/>
             <div className="card-body">
               <h3 className="card-title">
                 {photo.title}
               </h3>
+              <p className="card-description">
+                {photo.explanation}
+              </p>
               <p>
 
               </p>
@@ -24,20 +26,6 @@ function Photo(props) {
               />
             </div>
           </div>
-
-        // <div>
-        //   <h2>{photo.title}</h2>
-        //   <h3>Earth Date: {photo.date}</h3>
-        //   <img src={photo.url} alt=''></img>
-
-        //   <LikeButton
-        //     onClick={() => {setIsLiked(!isLiked)}}
-        //     isLiked={isLiked}
-        //     title={isLiked ? "Unlike" : "Like"}
-        //   />
-
-        //   <p>{photo.explanation}</p>
-        // </div>
       )
 }
 

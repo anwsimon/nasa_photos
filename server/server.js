@@ -1,44 +1,17 @@
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const NasaAPI = require('../src/datasource');
+const typeDefs  = require('./schema')
+const resolvers = require('./resolver')
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-    type Query {
-    "Query to get photos array for the homepage "
-    get5Photos: [Photo!]
-  }
-
-  "A photo is comprised of various metadata"
-  type Photo {
-    date: String!
-    "The photo's title"
-    title: String!
-    "The photo's url"
-    url: String!
-    "The track's media type"
-    media_type: String
-    "The track's explanation"
-    explanation: String
-  }
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    // hopefully returns an array of photo objects
-    get5Photos: async (_, __, {dataSources}) => {
-      return dataSources.nasaAPI.get5Photos()
-    },
-  },
-};
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources: () => {
   return {
-    nasaAPI: new NasaAPI(),
+    nasaAPI: new NasaAPI()
   };
 }, });
 
+//express middleware
 const app = express();
 
 const startup = async () => {
@@ -46,6 +19,7 @@ const startup = async () => {
   server.applyMiddleware({ app })
   return app
 }
+
 
 startup()
 app.listen({ port: 4000 }, () =>
