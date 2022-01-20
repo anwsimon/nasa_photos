@@ -19,12 +19,14 @@ const server = new ApolloServer({ typeDefs, resolvers, introspection: true, data
 //express middleware
 const app = express();
 
+app.use('/', express.static(__dirname + '/public'));
+console.log(__dirname)
+
 const startup = async () => {
   await server.start()
   server.applyMiddleware({ app, cors: false })
   return app
 }
-app.use(cors(corsOptions))
 
 startup()
 
