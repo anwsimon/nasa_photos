@@ -11,7 +11,7 @@ import {
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://cat-snaps-from-space.herokuapp.com/graphql',
   cache: new InMemoryCache(),
   fetchOptions: {
     mode: "no-cors",
