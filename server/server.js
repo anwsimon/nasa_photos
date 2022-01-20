@@ -3,6 +3,14 @@ const { ApolloServer } = require('apollo-server-express');
 const NasaAPI = require('../src/datasource');
 const typeDefs  = require('./schema')
 const resolvers = require('./resolver')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
+const port = process.env.PORT || 4000
+
+
+//express middleware
+const app = express();
 
 const server = new ApolloServer({ typeDefs, resolvers, introspection: true, dataSources: () => {
   return {
@@ -10,21 +18,34 @@ const server = new ApolloServer({ typeDefs, resolvers, introspection: true, data
   };
 }, });
 
-//express middleware
-const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/build"));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("/build"));
+// }
+// const startup = async () => {
+//   await server.start()
+  server.applyMiddleware({ app, path: '/graphql', cors: false })
+//   return app
+// }
+// startup()
+
+
+app.use(cors());
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/build')));
+
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/build', 'index.html'));
+  });
 }
-const startup = async () => {
-  await server.start()
-  server.applyMiddleware({ app, cors: false })
-  return app
-}
+app.listen(port, error => {
+  if (error) throw error;
+  console.log('Server running on port ' + port);
+});
 
-startup()
-
-app.listen({ port: process.env.PORT || 4000 }, () =>
-  console.log(`🚀 Server ready at https://studio.apollographql.com/dev`)
-);
+// app.listen({ port: process.env.PORT || 4000 }, () =>
+//   console.log(`🚀 Server ready at https://studio.apollographql.com/dev`)
+// );
 
