@@ -24,12 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("/build"));
 // }
-// const startup = async () => {
-//   await server.start()
-  server.applyMiddleware({ app, path: '/graphql', cors: false })
-//   return app
-// }
-// startup()
+const startup = async () => {
+  await server.start()
+server.applyMiddleware({ app, path: '/graphql', cors: false })
+  return app
+}
+startup()
 
 
 app.use(cors());
