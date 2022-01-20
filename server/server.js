@@ -3,7 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const NasaAPI = require('../src/datasource');
 const typeDefs  = require('./schema')
 const resolvers = require('./resolver')
-
+const path = require('path')
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources: () => {
   return {
@@ -13,6 +13,11 @@ const server = new ApolloServer({ typeDefs, resolvers, dataSources: () => {
 
 //express middleware
 const app = express();
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 const startup = async () => {
   await server.start()
