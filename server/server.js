@@ -19,8 +19,7 @@ const server = new ApolloServer({ typeDefs, resolvers, introspection: true, data
 //express middleware
 const app = express();
 
-app.use('/', express.static(__dirname + '/public'));
-console.log(__dirname)
+app.use(express.static(__dirname + '/build'));
 
 const startup = async () => {
   await server.start()
