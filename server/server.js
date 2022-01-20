@@ -10,7 +10,7 @@ var corsOptions = {
   credentials: true
 };
 
-const server = new ApolloServer({ typeDefs, resolvers, dataSources: () => {
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true, dataSources: () => {
   return {
     nasaAPI: new NasaAPI()
   };
