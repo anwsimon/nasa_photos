@@ -4,9 +4,9 @@ In this application you'll find a collection of photos (theoretically) taken by 
 
 You can "like" Felicette's snaps to let her know how much you appreciate her endeavors.
 
-# To run this project
+# To run this project on your machine
 
-npm run start:server
+npm run start
 
 # About this project
 
