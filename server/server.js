@@ -8,8 +8,6 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 4000
 
-
-//express middleware
 const app = express();
 
 const server = new ApolloServer({ typeDefs, resolvers, introspection: true, dataSources: () => {
@@ -21,9 +19,6 @@ const server = new ApolloServer({ typeDefs, resolvers, introspection: true, data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("/build"));
-// }
 const startup = async () => {
   await server.start()
 server.applyMiddleware({ app, path: '/graphql', cors: false })
@@ -40,12 +35,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 }
+
 app.listen(port, error => {
   if (error) throw error;
   console.log('Server running on port ' + port);
 });
-
-// app.listen({ port: process.env.PORT || 4000 }, () =>
-//   console.log(`🚀 Server ready at https://studio.apollographql.com/dev`)
-// );
-
