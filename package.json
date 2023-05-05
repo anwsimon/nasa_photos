@@ -22,10 +22,10 @@
   "scripts": {
     "begin": "npm run build && node server/server",
     "start": "node server/server",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "web":  "node server/server"
+    "web": "node server/server"
   },
   "eslintConfig": {
     "extends": [
