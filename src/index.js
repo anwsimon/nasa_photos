@@ -6,7 +6,7 @@ import App from "./App"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://main--distracted-lalande-1c0d5c.netlify.app/graphql",
   cache: new InMemoryCache(),
   fetchOptions: {
     mode: "no-cors",
