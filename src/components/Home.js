@@ -28,7 +28,7 @@ function Home() {
     )
 
   if (error) {
-    console.error(error, error.message)
+    console.error(error.message)
     return (
       <div>
         <p>
@@ -43,7 +43,6 @@ function Home() {
     )
   }
 
-  //homepage initial render, renders 5 photos
   return (
     <div>
       <Header />
