@@ -16,7 +16,3 @@ All photos are retrieved from the NASA Astronomy Photo of The Day API:
 https://apod.nasa.gov/apod/astropix.html
 https://api.nasa.gov/
 
-# This project usesd Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
